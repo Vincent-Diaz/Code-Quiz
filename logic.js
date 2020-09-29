@@ -1,11 +1,12 @@
-var timeLeft = document.querySelector("#timeLeft");
-var timerEL = document.querySelector("#startTime");
+// Delcared variables
+var countdownEl = document.querySelector("#time");
+var startEL = document.querySelector("#startBtn");
 var questionsEL = document.querySelector("#questions");
-var container = document.querySelector("#container");
-var choicesEl = document.querySelector("#choicesUl") 
-
+var wrapper = document.querySelector(".wrapper"); 
+var answerEl = document.querySelector("answer");
+var choicesEl = document.querySelector("#choicesUl");
 // Array with question, choices, and answers
-var questions = [
+var quiz = [
     {
         question: "Commonly used data types DO NOT include:",
         choices: ["strings", "booleans", "alerts", "number"],
@@ -33,5 +34,34 @@ var questions = [
     },
 ];
 // Declared variables
-var score = 0;
 var questionIndex = 0;
+var secondsLeft = 75;
+var penalty = 10;
+
+startEL.addEventListener("click", function(event){
+    startEL.style.display = "none";
+    timeCount();
+    questionsEL.textContent = "";
+    choicesEl.textContent = "";
+    for (var i = 0; i < questions.length; i++) {
+        var answerBtn = document.createElement("Button");
+        answerBtn.innerHTML = quiz[0].questions[i];
+        questionsEL.appendChild(answerBtn);
+        answerBtn.className = "answer-button";
+        if (quiz[0].questions[i] === quiz[0].correct){
+            answerBtn.setAttribute("data-correct", true);
+        }
+    }
+});
+
+document.body.addEventListener("click", function(event){
+    var target = event.target
+    if(target.classList.contains("answers-button")) {
+        var isCorrect = target.getAttribute("data-correct");
+        if (isCorrect) {
+            answerEl.textContent = "Correct!";
+        } else {
+            answerEl.textContent = "Wrong!";
+        }
+    }
+})
