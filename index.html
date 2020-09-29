@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="highscores.html">View Highscores</a>
+    <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
-    <div class="container">
-        <div id ="timeLeft"></div>
+    <div class="timer"></div>
+    
+    <div class="wrapper">
         <div id="questions">
             <h1>Coding Quiz</h1>
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds!</p>
-            <ul id="choices"></ul>
-            <button id="startTime">Begin Quiz</button>
+            <ul id="choicesUl"></ul>
+            <button type="button" id="startBtn">Begin Quiz</button>
         </div>
     </div>
+    <div class="answer"></div>
  
     <script src = "logic.js" type="text/javascript"></script>
 </body>
