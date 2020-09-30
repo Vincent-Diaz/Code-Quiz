@@ -5,10 +5,10 @@ var mainEl = document.querySelector("#main");
 var answerChoices = document.querySelector("#answers");
 var questionEl = document.querySelector("#questions");
 var feedback = document.querySelector("#feedback");
-var submitBtn = document.querySelector(".submitBtn");
-var submitScoreEl = document.querySelector("#submit-score");
-var userScoreEl = document.querySelector("#user-score");
-var userNameInput;
+// var submitBtn = document.querySelector(".submitBtn");
+// var submitScoreEl = document.querySelector("#submit-score");
+// var userScoreEl = document.querySelector("#user-score");
+// var userNameInput;
 //var choicesUl = document.querySelector("")
 // Array with question, choices, and answers
 var quiz = [
@@ -98,13 +98,14 @@ function timeCount() {
              countdownEl.textContent = "Time: " + time;
             if (time === 0) {
                 clearInterval(timerInterval);
+                allDone();
                 countdownEl.textContent = "Time's up! ";
             } 
     },1000);
 }
 
- function render(index) {
-    var getQuestion = quiz[index].question;
+ function render(questionIndex) {
+    var getQuestion = quiz[questionIndex].question;
     questionEl.textContent = getQuestion; 
     answerChoices.innerHTML = "";
     var getAnswers = quiz[questionIndex].choices;
@@ -144,7 +145,6 @@ function answerCheck() {
 
     if (questionIndex >= quiz.length) {
         allDone();
-        feedback.textContent = "End of quiz! " + "" + "You got " + score + "/" + quiz.length + " Correct!";
     }
     else {
         render(questionIndex);
@@ -153,5 +153,18 @@ function answerCheck() {
 }
 
 function allDone() {
-    
+    mainEl.innerHTML = "";
+    countdownEl.innerHTML = "";
+
+    var createH1 = document.createElement("h1")
+    createH1.setAttribute("id", "createH1");
+    createH1.textContent = "All Done!";
+
+    mainEl.appendChild(createH1);
+
+    var createP = document.createElement("p");
+    createP.setAttribute("id", "createP");
+
+    mainEl.appendChild(createP);
+
 }
