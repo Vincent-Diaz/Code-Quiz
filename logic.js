@@ -99,8 +99,8 @@ function timeCount() {
     },1000);
 }
 
- function render(questionIndex) {
-    var getQuestion = quiz[questionIndex].question;
+ function render(index) {
+    var getQuestion = quiz[index].question;
     questionEl.textContent = getQuestion; 
     answerChoices.innerHTML = "";
     var getAnswers = quiz[questionIndex].choices;
@@ -129,7 +129,7 @@ function answerCheck() {
     if (this.value !== quiz[questionIndex].answer) {
         time -= 15;
         countdownEl.textContent = time;
-        feedback.textContent = "Wrong";
+        feedback.textContent = "Wrong!";
 
     }
     else if (this.value === quiz[questionIndex].answer) {
@@ -137,7 +137,17 @@ function answerCheck() {
         feedback.textContent = "Correct!";
     }
     nextQuestion();
-    
+
+    if (questionIndex >= quiz.length) {
+        allDone();
+        feedback.textContent = "End of quiz! " + "" + "You got " + score + "/" + quiz.length + " Correct!";
+    }
+    else {
+        render(questionIndex);
+    }    
 
 }
-//  
+
+function allDone() {
+    
+}
