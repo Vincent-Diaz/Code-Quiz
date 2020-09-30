@@ -115,17 +115,17 @@ function timeCount() {
     }
  }
 
-//  function clearButtons() {
-//     choice.innerHTML = "";
-//  }
+ function clearButtons() {
+    answerChoices.innerHTML = "";
+ }
 
-//  function nextQuestion() {
-//      questionIndex++;
-//      clearButtons();
-//      render(questionIndex);
-//  }
+ function nextQuestion() {
+     questionIndex++;
+     clearButtons();
+     render(questionIndex);
+ }
 
-function answerCheck(questionIndex) {
+function answerCheck() {
     if (this.value !== quiz[questionIndex].answer) {
         time -= 15;
         countdownEl.textContent = time;
@@ -136,7 +136,7 @@ function answerCheck(questionIndex) {
         countdownEl.textContent = time;
         feedback.textContent = "Correct!";
     }
-    questionIndex++;
+    nextQuestion();
     
 
 }
