@@ -5,6 +5,10 @@ var mainEl = document.querySelector("#main");
 var answerChoices = document.querySelector("#answers");
 var questionEl = document.querySelector("#questions");
 var feedback = document.querySelector("#feedback");
+var submitBtn = document.querySelector(".submitBtn");
+var submitScoreEl = document.querySelector("#submit-score");
+var userScoreEl = document.querySelector("#user-score");
+var userNameInput;
 //var choicesUl = document.querySelector("")
 // Array with question, choices, and answers
 var quiz = [
