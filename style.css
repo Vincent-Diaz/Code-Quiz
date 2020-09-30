@@ -1,0 +1,18 @@
+.wrapper {
+    text-align: center;
+}
+
+#timer {
+    text-align: right;
+}
+
+#startBtn {
+    background-color: rgb(62, 62, 255);
+    color: #eee;
+    border-color: blue;
+    padding: 10px;
+}
+.d-none {
+    display: none;
+}
+
